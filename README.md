@@ -32,7 +32,7 @@
 - Draw i.o.
 
 ## UML Class Diagram v2.5 / Diagrama de Classe UML v2.5
-<img src="" width="1200"/>
+<img src="https://github.com/lramon2001/GestImoveis-Corretores/blob/main/Untitled%20Diagram.drawio%20(2).png" width="1200"/>
 
 ## Project Kanban / Kanban do Projeto
 - to see what we are implementing at the moment just click on [This link]() to see our Kanban
