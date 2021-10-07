@@ -55,9 +55,9 @@ O gestimoveis é um software que auxilia o trabalho dos corretores com gerenciam
 > **para ver o que estamos implementando no momento é só clicar [Neste link](https://trello.com/b/R7EWK793/gestim%C3%B3veis) para ver nosso Kanban**
 
 ## Versioning / Versionamento
-- This project follows the [release]() model for versioning.
+- This project follows the [release](https://github.com/lramon2001/GestImoveis-Corretores/releases/tag/v0.9.RELEASE) model for versioning.
 
-> **Esse projeto segue o modelo de [releases]() para versionamento.**
+> **Esse projeto segue o modelo de [releases](https://github.com/lramon2001/GestImoveis-Corretores/releases/tag/v0.9.RELEASE) para versionamento.**
 
 ## Documentation / Documentação
 - This project was documented using the Java documentation API (Javadoc). Click on [This link](https://lramon2001.github.io/GestImoveis-Corretores/) to see the documentation.
