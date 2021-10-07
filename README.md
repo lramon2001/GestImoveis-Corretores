@@ -65,7 +65,7 @@ O gestimoveis é um software que auxilia o trabalho dos corretores com gerenciam
 > **Este projeto foi documentado utilizando a API de documentação java (Javadoc). Para ver a documentação clique [Neste link](https://lramon2001.github.io/GestImoveis-Corretores/)**
 
 ## License / Licença
-MIT License © [GestImoveis]
+MIT License © GestImoveis
 
 ## Commits History / Histórico de commits
 - See [Commit History](https://github.com/lramon2001/GestImoveis-Corretores/commits/main) for contributors
