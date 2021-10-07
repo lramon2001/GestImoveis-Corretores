@@ -44,12 +44,12 @@
 > **Esse projeto segue o modelo de [releases]() para versionamento.**
 
 ## Documentation / Documentação
-- This project was documented using the Java documentation API (Javadoc). Click on [This link](https://lramon2001.github.io/Documentation/apidocs/) to see the documentation.
+- This project was documented using the Java documentation API (Javadoc). Click on [This link](https://lramon2001.github.io/GestImoveis-Corretores/) to see the documentation.
 
-> **Este projeto foi documentado utilizando a API de documentação java (Javadoc). Para ver a documentação clique [Neste link]()**
+> **Este projeto foi documentado utilizando a API de documentação java (Javadoc). Para ver a documentação clique [Neste link](https://lramon2001.github.io/GestImoveis-Corretores/)**
 
 ## License / Licença
-MIT License © [Grupo10]()
+MIT License © [GestImoveis]
 
 ## Commits History / Histórico de commits
 - See [Commit History]() for contributors
