@@ -1,5 +1,17 @@
 # GESTIMOVEIS
+O gestimoveis é um software que auxilia o trabalho dos corretores com gerenciamento de carteira de clientes/empreendimentos.
 
+- Software seguro com senha criptografada;
+- Interface gráfica amigável e bonita;
+- Trabalho documentado utlizando a API javadoc;
+- Aplicação com dois perfis: Usuário Padrão e Administrador;
+- Densolvido por estudantes da Universidade de Brasília.
+
+## Try using the software / Teste a aplicação 
+- To use the software just login ;
+> **Para utlizar o software basta realizar o login**
+- Utlize o login disponível [aqui]().
+> **Use the login available** [here]()
 
 ## Contributors / Colaboradores
 [![Série](https://img.shields.io/badge/MDS-Lucas-blue)](https://github.com/lramon2001)
