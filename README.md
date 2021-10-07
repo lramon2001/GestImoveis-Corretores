@@ -68,6 +68,6 @@ O gestimoveis é um software que auxilia o trabalho dos corretores com gerenciam
 MIT License © [GestImoveis]
 
 ## Commits History / Histórico de commits
-- See [Commit History]() for contributors
+- See [Commit History](https://github.com/lramon2001/GestImoveis-Corretores/commits/main) for contributors
 
-> **Consulte [Histórico de commits]() por colaborador.**
+> **Consulte [Histórico de commits](https://github.com/lramon2001/GestImoveis-Corretores/commits/main) por colaborador.**
