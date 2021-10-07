@@ -26,6 +26,7 @@
 - Java 11;
 - Spring 2.4.4;
 - Mysql;
+- PostgreSQL;
 - HTML 5;
 - CSS3;
 - BOOTSTRAP;
