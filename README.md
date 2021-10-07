@@ -51,8 +51,8 @@ O gestimoveis é um software que auxilia o trabalho dos corretores com gerenciam
 <img src="https://github.com/lramon2001/GestImoveis-Corretores/blob/main/Untitled%20Diagram.drawio%20(2).png" width="1200"/>
 
 ## Project Kanban / Kanban do Projeto
-- to see what we are implementing at the moment just click on [This link]() to see our Kanban
-> **para ver o que estamos implementando no momento é só clicar [Neste link]() para ver nosso Kanban**
+- to see what we are implementing at the moment just click on [This link](https://trello.com/b/R7EWK793/gestim%C3%B3veis) to see our Kanban
+> **para ver o que estamos implementando no momento é só clicar [Neste link](https://trello.com/b/R7EWK793/gestim%C3%B3veis) para ver nosso Kanban**
 
 ## Versioning / Versionamento
 - This project follows the [release]() model for versioning.
