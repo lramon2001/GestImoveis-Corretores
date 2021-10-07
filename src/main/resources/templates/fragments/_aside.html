@@ -1,0 +1,114 @@
+<!-- Main Sidebar Container -->
+<aside th:fragment="aside" class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a th:href="@{/clientes}" class="brand-link">
+    <img th:src="@{/img/tw-logo.png}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+    <span class="brand-text font-weight-light">GestImoveis</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="info">
+        <a th:href="@{/perfil}" class="d-block" sec:authentication="name">
+        </a>
+      </div>
+    </div>
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a th:href="@{/clientes}" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Clientes
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+              <a th:href="@{/clientes/cadastrar}" class="nav-link">
+                <i class="nav-icon fas fa-edit nav-icon"></i>
+                <p>Cadastrar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/clientes}" class="nav-link">
+                <i class="fas fa-list-ul nav-icon"></i>
+                <p>Listar</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a th:href="@{/clientes/inativos}" class="nav-link">
+                <i class="fas fa-exclamation-triangle nav-icon"></i>
+                <p>Verificar Inatividade</p>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a th:href="@{/corretores}" class="nav-link">
+            <i class="nav-icon fas fa-user-tie"></i>
+            <p>
+              Corretores
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+              <a th:href="@{/corretores/cadastrar}" class="nav-link">
+                <i class="nav-icon fas fa-edit nav-icon"></i>
+                <p>Cadastrar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/corretores}" class="nav-link">
+                <i class="fas fa-list-ul nav-icon"></i>
+                <p>Listar</p>
+              </a>
+            </li>
+
+           
+
+
+          </ul>
+        </li>
+        
+        <li class="nav-item">
+          <a th:href="@{/projetos}" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>
+              Empreendimentos
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+              <a th:href="@{/projetos/cadastrar}" class="nav-link">
+                <i class="nav-icon fas fa-edit nav-icon"></i>
+                <p>Cadastrar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/projetos/}" class="nav-link">
+                <i class="fas fa-list-ul nav-icon"></i>
+                <p>Listar</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a th:href="@{/corretores/relatorio}" class="nav-link">
+            <i class="fas fa-chart-line nav-icon"></i>
+            <p>Relatório</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

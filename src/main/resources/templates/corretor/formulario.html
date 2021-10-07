@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, ~{::styles}, ~{::scripts})}">
+
+<th:block th:fragment="styles">
+  <link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
+  <link rel="stylesheet" th:href="@{/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+</th:block>
+
+<head>
+  <title>[[${corretor.id == null ? 'Novo' : 'Editar'}]] Corretor</title>
+</head>
+
+<body>
+  <main>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="POST" th:object="${corretor}">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <div class="card-body">
+              <fieldset>
+                <legend>Dados Pessoais</legend>
+
+                <input type="hidden" th:field="*{id}">
+
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="nome">Nome</label>
+                      <input type="text" class="form-control" placeholder="Mariane Josefa Gonçalves" th:field="*{nome}">
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="email">E-mail</label>
+                      <input type="email" class="form-control" placeholder="mariane@exemplo.com" th:field="*{email}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label>Tipo de usuário</label>
+                      <select th:field="*{usuario}" class="form-control select2bs4" style="width: 100%">
+                        <option th:each="usuario : ${usuarios}" th:text="${usuario}" th:value="${usuario}"> </option>
+                      </select>
+                    </div>
+                  </div>
+
+                </div>
+
+                <fieldset th:if="${corretor.senha == null}">
+                  <legend>Dados de Login</legend>
+
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                      <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control" th:field="*{senha}" placeholder="Digite sua senha">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </fieldset>
+
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <th:block th:fragment="scripts">
+    <script th:src="@{/plugins/select2/js/select2.full.min.js}"></script>
+    <script th:src="@{/plugins/inputmask/jquery.inputmask.min.js}"></script>
+    <script>
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+
+      $('#cpf').inputmask(
+        { "mask": "999.999.999-99" }
+      )
+      $('#telefone').inputmask(
+        { "mask": "(99) 99999-9999" }
+      )
+      $('#endereco\\.cep').inputmask(
+        { "mask": "99999-999" }
+      )
+    </script>
+  </th:block>
+</body>
+
+</html>
+
+<!--                   <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="usuario">Tipo de usuário</label>
+                        <input type="text" class="form-control" placeholder="Administrador" th:field="*{usuario}">
+
+                        
+                    </div>
+                  </div>
+                </div> 
+ -->

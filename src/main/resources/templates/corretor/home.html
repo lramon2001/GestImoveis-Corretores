@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, _, ~{::scripts})}">
+<head>
+  <title>Lista de Corretores</title>
+</head>
+<body>
+  <main>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Tipo de usuário</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="corretor : ${corretores}">
+                  <td th:text="${corretor.id}">183</td>
+                  <td th:text="${corretor.nome}">Clara Giovana Daniela Duarte</td>
+                  <td th:text="${corretor.email}">clara_giovana@gmail.com</td>
+                  <td th:text="${corretor.usuario}">Desenvolvedor(a) Front End Jr</td>
+                  <td>
+                    <div class="btn-group">
+                      <a type="button" data-toggle="popover" data-placement="top" data-content="Detalhes" data-trigger="hover" class="btn btn-primary" th:href="@{/corretores/{id} (id=${corretor.id})}">
+                        <i class="fas fa-eye"></i>
+                      </a>
+                      <a type="button" data-toggle="popover" data-placement="top" data-content="Editar" data-trigger="hover" class="btn btn-warning" th:href="@{/corretores/{id}/editar (id=${corretor.id})}" sec:authorize="hasAuthority('ADMIN')">
+                        <i class="fas fa-edit"></i>
+                      </a>
+                      <a 
+                        type="button" data-toggle="popover" data-placement="top" 
+                        data-content="Remover" data-trigger="hover" class="btn btn-danger" 
+                        th:href="@{/corretores/{id}/excluir (id=${corretor.id})}" 
+                        onclick="return confirm('Tem certeza que deseja excluir o corretor?');" 
+                        sec:authorize="hasAuthority('ADMIN')"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </div>
+                  <td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <th:block th:fragment="scripts">
+    <script>
+      $(function () {
+        $('[data-toggle="popover"]').popover()
+      })
+    </script>
+  </th:block>
+</body>
+</html>

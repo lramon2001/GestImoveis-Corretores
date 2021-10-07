@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, ~{::styles}, ~{::scripts})}">
+
+<th:block th:fragment="styles">
+  <link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
+  <link rel="stylesheet" th:href="@{/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+</th:block>
+
+<head>
+  <title>[[${projeto.id == null ? 'Cadastrar novo' : 'Editar'}]] Empreendimento</title>
+</head>
+
+<body>
+  <main>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="POST" th:object="${projeto}">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+            <div class="card-body">
+              <input type="hidden" th:field="*{id}">
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" placeholder="Apartamento 3 quartos" th:field="*{nome}">
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="tipoDoImovel">Tipo do imóvel</label>
+                    <input type="text" class="form-control" th:field="*{tipoDoImovel}">
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label>Status</label>
+                   <select th:field="*{status}" class="form-control select2bs4" style="width: 100%;">
+                    <option th:each="status : ${statuses}" th:text="${status}" th:value="${status}">VENDIDO</option>
+
+                   </select>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>Clientes interessados nesse imóvel</label>
+                    <select th:field="*{clientes}" multiple data-placeholder="Selecione os clientes"
+                      class="form-control select2bs4" style="width: 100%;">
+                      <option th:each="cliente : ${clientes}" th:text="${cliente.nome}" th:value="${cliente.id}">
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="construtora">Construtora</label>
+                    <input type="text" class="form-control" th:field="*{construtora}">
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="valorDoImovel">Valor do Imovel</label>
+                    <input type="text" class="form-control" th:field="*{valorDoImovel}">
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="comissao">Comissao</label>
+                    <input type="text" class="form-control" th:field="*{comissao}">
+                  </div>
+                </div>
+
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea class="form-control" rows="4" th:field="*{descricao}"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <legend>Endereço</legend>
+
+              <input type="hidden" th:field="*{endereco.id}">
+
+              <div class="row">
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label for="endereco.cep">CEP</label>
+                    <input type="text" class="form-control" placeholder="71576-374" th:field="*{endereco.cep}">
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label>Estado</label>
+                    <select th:field="*{endereco.uf}" class="form-control select2bs4" style="width: 100%;">
+                      <option th:each="uf : ${ufs}" th:text="${uf}" th:value="${uf}">DF</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label for="endereco.cidade">Cidade</label>
+                    <input type="text" class="form-control" placeholder="Gama" th:field="*{endereco.cidade}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label for="endereco.bairro">Bairro</label>
+                    <input type="text" class="form-control" placeholder="Setor Leste" th:field="*{endereco.bairro}">
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label for="endereco.logradouro">Logradouro</label>
+                    <input type="text" class="form-control" placeholder="FGA - Campus Gama"
+                      th:field="*{endereco.logradouro}">
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label for="endereco.numero">Número</label>
+                    <input type="text" class="form-control" placeholder="300" th:field="*{endereco.numero}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="endereco.complemento">Complemento</label>
+                    <input type="text" class="form-control" placeholder="próximo ao BRT"
+                      th:field="*{endereco.complemento}">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+  </main>
+
+  <th:block th:fragment="scripts">
+    <script th:src="@{/plugins/select2/js/select2.full.min.js}"></script>
+    <script th:src="@{/plugins/jquery-mask/jquery.mask.min.js}"></script>
+    <script>
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+
+      $('#valorDoImovel').mask('#.##0,00', { reverse: true });
+      $('#comissao').mask('#.##0,00', { reverse: true });
+    </script>
+  </th:block>
+</body>
+
+</html>

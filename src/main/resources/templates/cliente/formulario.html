@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, ~{::styles}, ~{::scripts})}">
+
+<th:block th:fragment="styles">
+  <link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
+  <link rel="stylesheet" th:href="@{/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+</th:block>
+
+<head>
+  <title>[[${cliente.id == null ? 'Novo' : 'Editar'}]] Cliente</title>
+</head>
+
+<body>
+  <main>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="POST" th:object="${cliente}">
+
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+            <div class="card-body">
+              <fieldset>
+                <legend>Dados Pessoais</legend>
+
+                <input type="hidden" th:field="*{id}">
+
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="nome">Nome</label>
+                      <input type="text" class="form-control" placeholder="Edson Arantes do Nascimento"
+                        th:field="*{nome}">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="cpf">CPF</label>
+                      <input type="text" class="form-control" placeholder="197.019.701-97" th:field="*{cpf}">
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="telefone">Telefone</label>
+                      <input type="text" class="form-control" placeholder="(11) 91970-1970" th:field="*{telefone}">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="email">E-mail</label>
+                      <input type="email" class="form-control" placeholder="pele@cbf.com" th:field="*{email}">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="dataNascimento">Data de Nascimento</label>
+                      <input type="date" class="form-control" th:field="*{dataNascimento}">
+                    </div>
+                  </div>
+                </div>
+
+              </fieldset>
+
+              <fieldset>
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="rg">RG</label>
+                      <input type="text" class="form-control" placeholder="1970197" th:field="*{rg}">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label>Estado Civil</label>
+                      <select th:field="*{estadoCivil}" class="form-control select2bs4" style="width: 100%">
+                        <option th:each="estadoCivil : ${estadosCivis}" th:text="${estadoCivil}"
+                          th:value="${estadoCivil}">SOLTEIRO</option>
+
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label>Gênero</label>
+                      <select th:field="*{genero}" class="form-control select2bs4" style="width: 100%">
+                        <option th:each="genero : ${generos}" th:text="${genero}" th:value="${genero}">MASCULINO
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="dependentes">Numero de Dependentes</label>
+                      <input type="text" class="form-control" placeholder="2" th:field="*{dependentes}">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="renda">Renda</label>
+                      <input type="text" class="form-control" placeholder="" th:field="*{renda}">
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="fgts">FGTS</label>
+                      <input type="text" class="form-control" placeholder="" th:field="*{fgts}">
+                    </div>
+                  </div>
+
+                </div>
+
+                <div>
+                  <div class="form-group">
+                    <label>Status</label>
+                    <select th:field="*{status}" class="form-control select2bs4" style="width: 100%;">
+
+                      <option th:each="status : ${statuses}" th:text="${status}" th:value="${status}">APROVADO</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="observacoes">Observações</label>
+                      <textarea class="form-control" rows="4" th:field="*{observacoes}"
+                        placeholder="Pelé também é o jogador com mais passes para gols do Brasil. São 64 assistências do maior de todos os tempos com a amarelinha. Só em 1970, foram 11 passes para gols."></textarea>
+
+                    </div>
+                  </div>
+                </div>
+
+                <fieldset>
+
+                  <legend>Endereço</legend>
+
+                  <input type="hidden" th:field="*{endereco.id}">
+
+                  <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                      <div class="form-group">
+                        <label for="endereco.cep">CEP</label>
+                        <input type="text" class="form-control" placeholder="61626-365" th:field="*{endereco.cep}">
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                      <div class="form-group">
+                        <label>Estado</label>
+                        <select th:field="*{endereco.uf}" class="form-control select2bs4" style="width: 100%;">
+                          <option th:each="uf : ${ufs}" th:text="${uf}" th:value="${uf}">MG</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                      <div class="form-group">
+                        <label for="endereco.cidade">Cidade</label>
+                        <input type="text" class="form-control" placeholder="Três Corações"
+                          th:field="*{endereco.cidade}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                      <div class="form-group">
+                        <label for="endereco.bairro">Bairro</label>
+                        <input type="text" class="form-control" placeholder="Vila Gesse" th:field="*{endereco.bairro}">
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                      <div class="form-group">
+                        <label for="endereco.logradouro">Logradouro</label>
+                        <input type="text" class="form-control" placeholder="Rua Edson Arantes"
+                          th:field="*{endereco.logradouro}">
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                      <div class="form-group">
+                        <label for="endereco.numero">Número</label>
+                        <input type="text" class="form-control" placeholder="10" th:field="*{endereco.numero}">
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="endereco.complemento">Complemento</label>
+                        <textarea class="form-control" rows="4" th:field="*{endereco.complemento}"
+                          placeholder="Lugar onde nasceu o Rei da bola"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <th:block th:fragment="scripts">
+    <script th:src="@{/plugins/select2/js/select2.full.min.js}"></script>
+    <script th:src="@{/plugins/jquery-mask/jquery.mask.min.js}"></script>
+    <script>
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+
+      $('#cpf').mask('000.000.000-00', { reverse: true, placeholder: "___.___.___-__" });
+      $('#telefone').mask('(00) 00000-0000', { placeholder: "(__) _____-____" });
+      $('#endereco\\.cep').mask('00000-000', { placeholder: "_____-___" });
+
+    </script>
+  </th:block>
+</body>
+
+</html>

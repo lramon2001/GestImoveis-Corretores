@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, _, ~{::scripts})}">
+
+<head>
+    <title>Relatório do Corretor</title>
+    <script src='resources/static/js/chartClientesAtivosInativos.js'></script>
+</head>
+
+<body>
+    <main>
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Default box -->
+                <div class="card">
+                    <div class="card-header">
+                        <strong>
+                            <h4>Atividade dos clientes</h4>
+                        </strong>
+                    </div>
+                    <div class="card-body">
+                        <h4 th:text="'+ '+${total_clientes} + '  clientes'"></h4>
+                        <div class="row">
+                            <div class="col-12 order-2 order-md-1">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12">
+                                        <div class="info-box bg-light">
+                                            <div class="info-box-content">
+                                               
+                                                <div class="row h-100 justify-content-center align-items-center">
+                                                    <div class="col-12 col-sm-5">
+                                                        
+                                                        <canvas id="chart-ativos-inativos" class="row"></canvas>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-12 order-1 order-md-2">
+
+                                    <br>
+
+
+                                    <ul class="list-unstyled">
+
+                                    </ul>
+
+                                    <div class="text-center mt-5 mb-3">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <strong>
+                            <h4>Status dos Clientes</h4>
+                        </strong>
+                    </div>
+                    <div class="card-body">
+                        <h4 th:text=" '+' + ${total_clientes} + ' clientes' "></h4>
+                        <div class="row">
+                            <div class="col-12 order-2 order-md-1">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12">
+                                        <div class="info-box bg-light">
+                                            <div class="info-box-content">
+                                               
+                                                <div class="row h-100 justify-content-center align-items-center">
+                                                    <div class="col-12 col-sm-6">
+
+                                                        <!-- SEGUNDO GRAFICO -->
+                                                        <canvas id="chart-status" class="row"></canvas>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-12 order-1 order-md-2">
+
+                                    <br>
+
+
+                                    <ul class="list-unstyled">
+
+                                    </ul>
+
+                                    <div class="text-center mt-5 mb-3">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+
+                <div class="col-sm-12">
+                    <!-- Default box -->
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>
+                                <h4>Empreendimentos</h4>
+                            </strong>
+                        </div>
+                        <div class="card-body">
+                            <h4 th:text="'+ '+${total_empreendimentos} + '  empreendimentos'"></h4>
+                            <div class="row">
+                                <div class="col-12 order-2 order-md-1">
+                                    <div class="row">
+
+                                        <div class="col-12 col-sm-12">
+                                            <div class="info-box bg-light">
+                                                <div class="info-box-content">
+                                                    
+                                                    <div class="row h-100 justify-content-center align-items-center">
+                                                        <div class="col-12 col-sm-5">
+
+                                                            <!-- SEGUNDO GRAFICO -->
+                                                            <canvas id="chart-imoveis" class="row"></canvas>
+    
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-12 order-1 order-md-2">
+
+
+
+
+
+
+                                    <ul class="list-unstyled">
+
+                                    </ul>
+
+                                    <div class="text-center mt-5 mb-3">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row h-100 justify-content-center align-items-center">
+                                <h4 th:text="'+ '+${vendido} + '  vendas'"></h4>
+                            </div>
+
+
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+    </main>
+
+    <th:block th:fragment="scripts">
+        <script>
+            $(function () {
+                $('[data-toggle="popover"]').popover()
+            })
+        </script>
+        <script src=<script>
+        </script>"https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            var cativos = [[${ ativos }]];
+            var cinativos = [[${ inativos }]];
+            
+
+
+            var ctx1 = document.getElementById("chart-ativos-inativos");
+            
+
+
+            /* CONFIGS CHART ATIVOS E INATIVOS */
+            const labelsAtivosInativos = [
+                'Ativos',
+                'Inativos',
+
+            ];
+            const dataAtivosInativos = {
+                labels: labelsAtivosInativos,
+                datasets: [{
+                    label: 'Ativos e Inativos',
+                    backgroundColor: ['rgb(0,227,150)', 'rgb(0,143,251)'],
+
+                    data: [cativos, cinativos],
+                }]
+            };
+            const configAtivosInativos = {
+                type: 'pie',
+                data: dataAtivosInativos,
+                options: {
+                    responsive:true,
+
+                }
+            };
+
+
+
+            
+
+
+            var chartGraph = new Chart(ctx1, configAtivosInativos);
+            
+
+        </script>
+
+        <script>
+
+            var caguardando_contato = [[${ aguardando_contato }]];
+            var csem_simulacao = [[${ sem_simulacao }]];
+            var cem_simulacao = [[${ em_simulacao }]];
+            var csimulacao_pronta = [[${ simulacao_pronta }]]; 
+            var cnegado = [[${ negado }]];
+            var cem_aprovacao = [[${ em_aprovacao }]];
+            var caprovado = [[${ aprovado }]];
+            var cvenda_concluida = [[${ venda_concluida}]];
+            
+
+            var ctx2 = document.getElementById("chart-status");
+
+            /* CONFIGS CHART STATUS CLIENTE */
+            const labelsStatus = [
+                'Aguardando Contato',
+                'Em Simulação',
+                'Negado',
+                'Em Aprovação',
+                'Simulação Pronta',
+                'Aprovado',
+                'Sem Simulação',
+                'Venda Concluída'
+
+
+
+            ];
+            const dataStatus = {
+                labels: labelsStatus,
+                datasets: [{
+                    label: 'Teste',
+                    backgroundColor: ['rgb(0,143,251)', 'rgb(119,93,208)','rgb(255,255,0)','rgb(254,176,25)','rgb(0,227,150)','rgb(210,105,30)','rgb(239, 00, 90)', 'rgb(250,128,114)'],
+
+                    data: [caguardando_contato, cem_simulacao, cnegado,cem_aprovacao,csimulacao_pronta,caprovado,csem_simulacao,cvenda_concluida],
+                }]
+            };
+            const configStatus = {
+                type: 'pie',
+                data: dataStatus,
+                options: {
+                    responsive:true,
+
+                }
+            };
+
+            var chartGraph = new Chart(ctx2, configStatus);
+        </script>
+
+<script>
+    var cdisponivel = [[${ disponivel }]];
+    var ccindisponivel = [[${ indisponivel }]];
+    var cvendido = [[${ vendido }]];
+    
+
+
+    var ctx3 = document.getElementById("chart-imoveis");
+    
+
+
+    /* CONFIGS CHART IMOVEIS */
+    const labelsImoveis = [
+        'Disponível',
+        'Indisponível',
+        'Vendido',
+
+    ];
+    const dataImoveis = {
+        labels: labelsImoveis,
+        datasets: [{
+            label: 'Status dos Imóveis',
+            backgroundColor: ['rgb(254,176,25)', 'rgb(0,227,150)', 'rgb(0,143,251)'],
+
+            data: [cdisponivel,ccindisponivel, cvendido],
+        }]
+    };
+    const configImoveis = {
+        type: 'pie',
+        data: dataImoveis,
+        options: {
+            responsive:true,
+        }
+    };
+
+    var chartGraph = new Chart(ctx3, configImoveis);
+    
+
+</script>
+    </th:block>
+
+
+
+
+
+
+</body>
+
+</html>

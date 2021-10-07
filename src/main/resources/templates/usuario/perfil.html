@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, _, ~{::scripts})}">
+
+<head>
+  <title>Perfil do Usuário</title>
+</head>
+
+<body>
+  <main>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle" id="profile-user-img" alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center" th:text="${logado.nome}">Nina Mcintire</h3>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <!-- About Me Box -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Dados Pessoais</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+
+                <strong><i class="fas fa-envelope mr-1"></i> E-mail</strong>
+                <p class="text-muted" id="email" th:text="${logado.email}">nina@mail.com</p>
+
+                <hr>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><button class="btn btn-primary" href="#mudar-senha" data-toggle="tab">Atualizar
+                      Senha</button></li>
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+
+                  <div class="tab-pane" id="mudar-senha">
+                    <form class="form-horizontal" method="POST" th:action="@{/alterar-senha}"
+                      th:object="${alterarSenhaForm}">
+                      <div class="form-group row">
+                        <label for="senhaAtual" class="col-sm-2 col-form-label">Senha atual</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" th:field="*{senhaAtual}">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="novaSenha" class="col-sm-2 col-form-label">Nova senha</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" th:field="*{novaSenha}">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button type="submit" class="btn btn-primary">Alterar senha</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+    </div>
+  </main>
+
+  <th:block th:fragment="scripts">
+    <script th:src="@{/js/avatar.min.js}"></script>
+    <script>
+      const email = document.getElementById("email").innerText;
+
+      const avatar = Avatar.from(document.getElementById('profile-user-img'), {
+        'email': email
+      });
+    </script>
+  </th:block>
+</body>
+
+</html>
