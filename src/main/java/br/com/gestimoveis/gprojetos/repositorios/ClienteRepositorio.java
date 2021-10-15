@@ -15,7 +15,9 @@ public interface ClienteRepositorio extends JpaRepository<Cliente,Long> {
 
    @Query("select c from Cliente c where c.status = :status")
    List<Cliente> buscaporstatus(StatusCliente status);
-   
+
+   @Query("select c from Cliente c where c.nome like %?1%")
+   List<Cliente> findClienteByName(String nome);
 
    
 }

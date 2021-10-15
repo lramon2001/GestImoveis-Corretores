@@ -6,6 +6,7 @@
 </head>
 
 <body>
+
   <main>
     <div class="row">
       <div class="col-sm-12">
@@ -20,7 +21,16 @@
                 </div>
 
                 <h3 class="profile-username text-center" th:text="${cliente.nome}">Nina Mcintire</h3>
+                
+                
+
+
               </div>
+
+
+
+
+
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -105,6 +115,7 @@
 
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Endereço</strong>
                 <p class="text-muted" th:text="${cliente.endereco}">Malibu, California</p>
+
               </div>
               <!-- /.card-body -->
             </div>
@@ -139,6 +150,7 @@
                       <div class="timeline-footer">
                         <a th:href="@{/projetos/{id} (id=${projeto.id})}" class="btn btn-primary btn-sm">Detalhes</a>
                       </div>
+
                     </div>
                   </div>
                 </div>

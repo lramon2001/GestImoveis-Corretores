@@ -35,6 +35,34 @@ public class EmpreendimentoController {
         return modelAndView;
     }
 
+    @GetMapping("/disponivel")
+    public ModelAndView disponivel() {
+        ModelAndView modelAndView = new ModelAndView("projeto/filtro");
+
+        modelAndView.addObject("projetos", empreendimentoRepositorio.findByStatus(StatusImovel.DISPONIVEL));
+
+        return modelAndView;
+    }
+
+    @GetMapping("/indisponivel")
+    public ModelAndView indisponivel() {
+        ModelAndView modelAndView = new ModelAndView("projeto/filtro");
+
+        modelAndView.addObject("projetos", empreendimentoRepositorio.findByStatus(StatusImovel.INDISPONIVEL));
+
+        return modelAndView;
+    }
+
+    @GetMapping("/vendido")
+    public ModelAndView vendido() {
+        ModelAndView modelAndView = new ModelAndView("projeto/filtro");
+
+        modelAndView.addObject("projetos", empreendimentoRepositorio.findByStatus(StatusImovel.VENDIDO));
+
+        return modelAndView;
+    }
+
+
     @GetMapping("{id}")
     public ModelAndView detalhes(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("projeto/detalhes");

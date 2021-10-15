@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       http.authorizeRequests()
+             http.authorizeRequests()
             .antMatchers("/adminlte/**").permitAll()
             .antMatchers("/img/**").permitAll()
             .antMatchers("/js/**").permitAll()
@@ -28,6 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/**/cadastrar").hasAuthority(Perfil.ADMIN.toString())
             .antMatchers("/**/editar").hasAuthority(Perfil.ADMIN.toString())
             .antMatchers("/**/excluir").hasAuthority(Perfil.ADMIN.toString())
+            .antMatchers("/**/pesquisarcliente").hasAuthority(Perfil.ADMIN.toString())
             .anyRequest().authenticated();
 
         http.formLogin()
@@ -42,6 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.rememberMe()
             .key("chaverememberMe");
+ 
     }
 
     @Override

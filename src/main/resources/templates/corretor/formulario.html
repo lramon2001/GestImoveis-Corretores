@@ -30,6 +30,9 @@
                     <div class="form-group">
                       <label for="nome">Nome</label>
                       <input type="text" class="form-control" placeholder="Mariane Josefa Gonçalves" th:field="*{nome}">
+                      <ul>
+                        <li class="text-danger" th:each="erro : ${#fields.errors('nome')}" th:text="${erro}"></li>
+                      </ul>
                     </div>
                   </div>
 
@@ -41,6 +44,9 @@
                     <div class="form-group">
                       <label for="email">E-mail</label>
                       <input type="email" class="form-control" placeholder="mariane@exemplo.com" th:field="*{email}">
+                      <ul>
+                        <li class="text-danger" th:each="erro : ${#fields.errors('email')}" th:text="${erro}"></li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -51,6 +57,9 @@
                       <select th:field="*{usuario}" class="form-control select2bs4" style="width: 100%">
                         <option th:each="usuario : ${usuarios}" th:text="${usuario}" th:value="${usuario}"> </option>
                       </select>
+                      <ul>
+                        <li class="text-danger" th:each="erro : ${#fields.errors('usuario')}" th:text="${erro}"></li>
+                      </ul>
                     </div>
                   </div>
 

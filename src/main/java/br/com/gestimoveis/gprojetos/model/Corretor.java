@@ -7,22 +7,25 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Corretor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotNull
     @Column(nullable = false)
     private String nome;
-
+    @NotNull
+    @Email
     @Column(nullable = false, unique = true)
     private String email;
-
+    @NotNull
     @Column(nullable = false)
     private String usuario;
-
+    @NotNull
     @Column(nullable = false)
     private String senha;
 

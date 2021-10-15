@@ -15,7 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -28,49 +34,66 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @NotNull
+    @Size(min=3,max=80)
+    @Column(nullable = false, length = 80)
     private String nome;
 
+    @NotNull
+    @CPF
     @Column(nullable = false,unique = true)
     private String cpf;
 
+    @NotNull
     @Column(nullable = false)
     private String rg;
 
+    @NotNull
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private EstadoCivil estadoCivil;
 
+    @NotNull
     @Column(nullable = false)
     private Double renda;
 
+    @NotNull
     @Column(nullable = false)
     private String telefone;
 
+    @NotNull
+    @Past
     @Column(nullable = false, name="data_nascimento")
     @DateTimeFormat(iso = ISO.DATE)
     private LocalDate dataNascimento;
 
+    @NotNull
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Genero genero;
 
+    @NotNull
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusCliente status;
 
+    @NotNull
+    @Email
     @Column(nullable = false, unique = true)
     private String email;
 
+    @NotNull
     @Column(nullable = false)
     private Integer dependentes;
 
+    @NotNull
     @Column(nullable = false)
     private Double fgts;
 
    
     private String observacoes;
 
+    @Valid
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "endereco_id_fk", nullable = false)
     private Endereço endereco;
@@ -210,6 +233,13 @@ public class Cliente {
 
     public void setEmpreendimentos(List<Empreendimento> empreendimentos) {
         this.empreendimentos = empreendimentos;
+    }
+
+    public String getTelefoneSemFormato(){
+       String brasil = "55";
+        
+       String telefone_sem_formato= this.telefone.replace("(","").replace(")", "").replace("-","").replace(" ","");
+        return brasil + telefone_sem_formato;
     }
 
     @Override

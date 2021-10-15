@@ -1,13 +1,13 @@
 <!-- Main Sidebar Container -->
-<aside th:fragment="aside" class="main-sidebar sidebar-dark-primary elevation-4">
+<aside th:fragment="aside" class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #282a36;">
   <!-- Brand Logo -->
   <a th:href="@{/clientes}" class="brand-link">
-    <img th:src="@{/img/tw-logo.png}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
-    <span class="brand-text font-weight-light">GestImoveis</span>
+    <img th:src="@{/img/tw-logo4.png}" alt="AdminLTE Logo" class="brand-image  elevation-3">
+    <span class="brand-text font-weight-light" style=" color: rgb(255, 255, 255);">GESTIMOVEIS</span>
   </a>
 
   <!-- Sidebar -->
-  <div class="sidebar">
+  <div class="sidebar" style="background-color: #282a36;">
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="info">
         <a th:href="@{/perfil}" class="d-block" sec:authentication="name">
@@ -32,6 +32,7 @@
                 <p>Cadastrar</p>
               </a>
             </li>
+
             <li class="nav-item">
               <a th:href="@{/clientes}" class="nav-link">
                 <i class="fas fa-list-ul nav-icon"></i>
@@ -45,6 +46,76 @@
                 <p>Verificar Inatividade</p>
               </a>
             </li>
+
+
+
+            <li class="nav-item">
+              <a th:href="@{/corretores}" class="nav-link">
+                <i class="fas fa-filter nav-icon"></i>
+                <p>
+                  Filtrar por Status
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a th:href="@{/clientes/aguardandocontato}" class="nav-link">
+                    <i class=></i>
+                    <p>Aguardando Contato</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a th:href="@{/clientes/semsimulacao}" class="nav-link">
+                    <i class=></i>
+                    <p>Sem Simulação</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a th:href="@{/clientes/emsimulacao}" class="nav-link">
+                    <i class=></i>
+                    <p>Em Simulação</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a th:href="@{/clientes/simulacaopronta}" class="nav-link">
+                    <i class=></i>
+                    <p>Simulação Pronta</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a th:href="@{/clientes/negado}" class="nav-link">
+                    <i class=></i>
+                    <p>Negado</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a th:href="@{/clientes/emaprovacao}" class="nav-link">
+                    <i class=></i>
+                    <p>Em Aprovação</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a th:href="@{/clientes/aprovado}" class="nav-link">
+                    <i class=></i>
+                    <p>Aprovado</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a th:href="@{/clientes/vendaconcluida}" class="nav-link">
+                    <i class=></i>
+                    <p>Venda Concluída</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
 
           </ul>
         </li>
@@ -71,12 +142,14 @@
               </a>
             </li>
 
-           
+
 
 
           </ul>
         </li>
-        
+
+
+
         <li class="nav-item">
           <a th:href="@{/projetos}" class="nav-link">
             <i class="nav-icon fas fa-home"></i>
@@ -98,7 +171,47 @@
                 <p>Listar</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a th:href="@{/corretores}" class="nav-link">
+                <i class="fas fa-filter nav-icon"></i>
+                <p>
+                  Filtrar por Status
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a th:href="@{/projetos/disponivel}" class="nav-link">
+                    <i class=></i>
+                    <p>Disponivel</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a th:href="@{/projetos/indisponivel}" class="nav-link">
+                    <i class=></i>
+                    <p>Indisponivel</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a th:href="@{/projetos/vendido}" class="nav-link">
+                    <i class=></i>
+                    <p>Vendido</p>
+                  </a>
+                </li>
+
+               
+
+                
+
+               
+
+               
+
+              </ul>
+            </li>
           </ul>
+          
         </li>
         <li class="nav-item">
           <a th:href="@{/corretores/relatorio}" class="nav-link">

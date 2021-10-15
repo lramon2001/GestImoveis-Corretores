@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Endereço {
@@ -17,22 +18,27 @@ public class Endereço {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @Column(nullable = false)
     private String cidade;
 
+    @NotNull
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private UF uf;
 
+    @NotNull
     @Column(nullable = false)
     private String bairro;
 
+    @NotNull
     @Column(nullable = false)
     private String logradouro;
 
     @Column(nullable = false)
     private String cep;
 
+    @NotNull
     @Column(nullable = false)
     private String numero;
 
