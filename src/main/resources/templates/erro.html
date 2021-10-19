@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, _, _)}">
+
+<head>
+  <title>[[${titulo}]]</title>
+</head>
+
+<body>
+  <main>
+    <div class="error-page">
+      <h2 class="headline" th:classappend="${cssClass}" th:text="${status}"></h2>
+
+      <div class="error-content">
+        <h3><i class="fas fa-exclamation-triangle" th:classappend="${cssClass}"></i> <span th:text="${mensagem}"></span>
+        </h3>
+
+        <p>
+          <span th:text="${causa}"></span> <br>
+          Você pode voltar para a <a href="javascript:history.back()">página anterior</a>
+        </p>
+      </div>
+      <!-- /.error-content -->
+    </div>
+    <!-- /.error-page -->
+  </main>
+</body>
+</html>

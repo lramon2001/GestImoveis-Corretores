@@ -1,7 +1,11 @@
 package br.com.gestimoveis.gprojetos.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -97,7 +101,16 @@ public class EmpreendimentoController {
     }
 
     @PostMapping({"/cadastrar","/{id}/editar"})
-    public String salvar(Empreendimento empreendimento){
+    public String salvar(@Valid Empreendimento empreendimento, BindingResult resultado, ModelMap model){
+
+        if(resultado.hasErrors()){
+            model.addAttribute("projeto", new Empreendimento());
+            model.addAttribute("clientes", clienteRepositorio.findAll());
+            model.addAttribute("ufs", UF.values());
+            model.addAttribute("statuses",StatusImovel.values());
+
+            return "projeto/formulario";
+        }
         empreendimentoRepositorio.save(empreendimento);
 
         return "redirect:/projetos";

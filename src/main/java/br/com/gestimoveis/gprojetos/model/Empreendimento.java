@@ -15,6 +15,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ManyToAny;
 import org.springframework.format.annotation.NumberFormat;
@@ -28,31 +31,41 @@ public class Empreendimento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    @NotNull
+    @Size(min=3,max=80)
     @Column(nullable = false)
     private String nome;
 
+    @NotNull
     @Column(nullable = false)
     private String construtora;
 
+    @NotNull
     @Column(nullable = false)
     @NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
     private BigDecimal valorDoImovel;
 
+    @NotNull
     @Column(nullable = false)
     @NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
     private BigDecimal comissao;
 
+    @NotNull
     @Column(nullable = false)
     private String tipoDoImovel;
 
+    @NotNull
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusImovel status;
 
+
     @Column(nullable = false, columnDefinition = "TEXT")
     private String descricao;
 
+    @Valid
+    @NotNull
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id_fk", nullable = false)
     private Endereço endereco;

@@ -7,7 +7,10 @@
 </th:block>
 
 <head>
-  <title>[[${projeto.id == null ? 'Cadastrar novo' : 'Editar'}]] Empreendimento</title>
+ <title>[[${projeto.id == null ? 'Cadastrar novo' : 'Editar'}]] Empreendimento</title> 
+  <ul>
+    <li class="text-danger" th:each="erro : ${#fields.errors('projeto.id')}" th:text="${erro}"></li>
+  </ul>
 </head>
 
 <body>
@@ -28,6 +31,9 @@
                   <div class="form-group">
                     <label for="nome">Nome</label>
                     <input type="text" class="form-control" placeholder="Apartamento 3 quartos" th:field="*{nome}">
+                    <ul>
+                      <li class="text-danger" th:each="erro : ${#fields.errors('nome')}" th:text="${erro}"></li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -38,6 +44,9 @@
                   <div class="form-group">
                     <label for="tipoDoImovel">Tipo do imóvel</label>
                     <input type="text" class="form-control" th:field="*{tipoDoImovel}">
+                    <ul>
+                      <li class="text-danger" th:each="erro : ${#fields.errors('tipoDoImovel')}" th:text="${erro}"></li>
+                    </ul>
                   </div>
                 </div>
 
@@ -46,8 +55,10 @@
                     <label>Status</label>
                    <select th:field="*{status}" class="form-control select2bs4" style="width: 100%;">
                     <option th:each="status : ${statuses}" th:text="${status}" th:value="${status}">VENDIDO</option>
-
                    </select>
+                   <ul>
+                    <li class="text-danger" th:each="erro : ${#fields.errors('status')}" th:text="${erro}"></li>
+                  </ul>
                   </div>
                 </div>
               </div>
@@ -62,6 +73,7 @@
                       <option th:each="cliente : ${clientes}" th:text="${cliente.nome}" th:value="${cliente.id}">
                       </option>
                     </select>
+                    
                   </div>
                 </div>
               </div>
@@ -72,6 +84,9 @@
                   <div class="form-group">
                     <label for="construtora">Construtora</label>
                     <input type="text" class="form-control" th:field="*{construtora}">
+                    <ul>
+                      <li class="text-danger" th:each="erro : ${#fields.errors('construtora')}" th:text="${erro}"></li>
+                    </ul>
                   </div>
                 </div>
 
@@ -81,15 +96,21 @@
               <div class="row">
                 <div class="col-md-6 col-sm-12">
                   <div class="form-group">
-                    <label for="valorDoImovel">Valor do Imovel</label>
+                    <label for="valorDoImovel">Valor do Imóvel</label>
                     <input type="text" class="form-control" th:field="*{valorDoImovel}">
+                    <ul>
+                      <li class="text-danger" th:each="erro : ${#fields.errors('valorDoImovel')}" th:text="${erro}"></li>
+                    </ul>
                   </div>
                 </div>
 
                 <div class="col-md-6 col-sm-12">
                   <div class="form-group">
-                    <label for="comissao">Comissao</label>
+                    <label for="comissao">Comissão</label>
                     <input type="text" class="form-control" th:field="*{comissao}">
+                    <ul>
+                      <li class="text-danger" th:each="erro : ${#fields.errors('comissao')}" th:text="${erro}"></li>
+                    </ul>
                   </div>
                 </div>
 
@@ -115,6 +136,9 @@
                   <div class="form-group">
                     <label for="endereco.cep">CEP</label>
                     <input type="text" class="form-control" placeholder="71576-374" th:field="*{endereco.cep}">
+                    <ul>
+                      <li class="text-danger" th:each="erro : ${#fields.errors('endereco.cep')}" th:text="${erro}"></li>
+                    </ul>
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
@@ -123,12 +147,18 @@
                     <select th:field="*{endereco.uf}" class="form-control select2bs4" style="width: 100%;">
                       <option th:each="uf : ${ufs}" th:text="${uf}" th:value="${uf}">DF</option>
                     </select>
+                    <ul>
+                      <li class="text-danger" th:each="erro : ${#fields.errors('endereco.uf')}" th:text="${erro}"></li>
+                    </ul>
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
                   <div class="form-group">
                     <label for="endereco.cidade">Cidade</label>
                     <input type="text" class="form-control" placeholder="Gama" th:field="*{endereco.cidade}">
+                    <ul>
+                      <li class="text-danger" th:each="erro : ${#fields.errors('endereco.cidade')}" th:text="${erro}"></li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -138,6 +168,9 @@
                   <div class="form-group">
                     <label for="endereco.bairro">Bairro</label>
                     <input type="text" class="form-control" placeholder="Setor Leste" th:field="*{endereco.bairro}">
+                    <ul>
+                      <li class="text-danger" th:each="erro : ${#fields.errors('endereco.bairro')}" th:text="${erro}"></li>
+                    </ul>
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
@@ -145,12 +178,18 @@
                     <label for="endereco.logradouro">Logradouro</label>
                     <input type="text" class="form-control" placeholder="FGA - Campus Gama"
                       th:field="*{endereco.logradouro}">
+                      <ul>
+                        <li class="text-danger" th:each="erro : ${#fields.errors('endereco.logradouro')}" th:text="${erro}"></li>
+                      </ul>
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
                   <div class="form-group">
                     <label for="endereco.numero">Número</label>
                     <input type="text" class="form-control" placeholder="300" th:field="*{endereco.numero}">
+                    <ul>
+                      <li class="text-danger" th:each="erro : ${#fields.errors('endereco.numero')}" th:text="${erro}"></li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -161,6 +200,7 @@
                     <label for="endereco.complemento">Complemento</label>
                     <input type="text" class="form-control" placeholder="próximo ao BRT"
                       th:field="*{endereco.complemento}">
+                      
                   </div>
                 </div>
               </div>
