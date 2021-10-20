@@ -4,15 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 import br.com.gestimoveis.gprojetos.model.Corretor;
 import br.com.gestimoveis.gprojetos.servicos.CorretorServico;
 
 @SpringBootApplication
+//@ComponentScan(basePackages = {"br.com.gestimoveis.gprojetos.GProjetosApplication"})
 public class GProjetosApplication implements CommandLineRunner{
 
-@Autowired
-private CorretorServico corretorServico;
+@Autowired private CorretorServico corretorServico;
 
 	public static void main(String[] args) {
 		SpringApplication.run(GProjetosApplication.class, args);

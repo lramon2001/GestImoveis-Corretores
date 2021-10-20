@@ -12,8 +12,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import br.com.gestimoveis.gprojetos.model.Perfil;
 import br.com.gestimoveis.gprojetos.servicos.UserDetailsServiceImpl;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.formLogin()
             .loginPage("/login")
-            .defaultSuccessUrl("/clientes")     
+            .defaultSuccessUrl("/clientes")
             .permitAll();
 
         http.logout()

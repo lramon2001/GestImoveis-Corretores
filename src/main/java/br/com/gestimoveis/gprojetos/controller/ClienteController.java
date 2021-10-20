@@ -154,7 +154,7 @@ public ModelAndView editar(@PathVariable Long id){
 
 }
 @PostMapping({"/cadastrar","/{id}/editar"})
-public String salvar(@Valid Cliente cliente, BindingResult resultado,ModelMap model){
+public String salvar(@Valid Cliente cliente, BindingResult resultado, ModelMap model){
     if(resultado.hasErrors()){
     model.addAttribute("ufs", UF.values());
     model.addAttribute("statuses", StatusCliente.values());
