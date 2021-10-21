@@ -38,15 +38,6 @@ public ModelAndView home(){
 
 }
 
-@PostMapping("**/pesquisarcliente")
-public ModelAndView pesquisar(@RequestParam("nomepesquisa") String nomepesquisa){
-    ModelAndView modelAndView = new ModelAndView("cliente/home");
-    modelAndView.addObject("clientes", clienteRepositorio.findClienteByName(nomepesquisa));
-    modelAndView.addObject("statuses", StatusCliente.values());
-    return modelAndView;
-}
-
-
 @GetMapping("/inativos")
 public ModelAndView inativos(){
     ModelAndView modelAndView = new ModelAndView("cliente/inativos");
@@ -167,14 +158,11 @@ public String salvar(@Valid Cliente cliente, BindingResult resultado, ModelMap m
     return "redirect:/clientes";
 }
 
-
-
 @GetMapping("/{id}/excluir")
 public String excluir (@PathVariable Long id){
     clienteRepositorio.deleteById(id);
 
     return "redirect:/clientes";
 }
-
 
 }

@@ -3,7 +3,8 @@
   <!-- Brand Logo -->
   <a th:href="@{/clientes}" class="brand-link">
     <img th:src="@{/img/tw-logo5.png}" alt="AdminLTE Logo" class="brand-image  elevation-3">
-    <span class="brand-text font-weight-bold" style=" color: rgb(255, 255, 255); letter-spacing: .3rem; ">GESTIMOVEIS</span>
+    <span class="brand-text font-weight-bold"
+      style=" color: rgb(255, 255, 255); letter-spacing: .3rem; ">GESTIMOVEIS</span>
   </a>
 
   <!-- Sidebar -->
@@ -47,6 +48,12 @@
               </a>
             </li>
 
+            <li class="nav-item">
+              <a th:href="@{/clientes/inativos}" class="nav-link">
+                <i class="fas fa-exclamation-triangle nav-icon"></i>
+                <p>Arq</p>
+              </a>
+            </li>
 
 
             <li class="nav-item">
@@ -200,18 +207,18 @@
                   </a>
                 </li>
 
-               
 
-                
 
-               
 
-               
+
+
+
+
 
               </ul>
             </li>
           </ul>
-          
+
         </li>
         <li class="nav-item">
           <a th:href="@{/corretores/relatorio}" class="nav-link">
